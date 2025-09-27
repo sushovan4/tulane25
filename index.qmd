@@ -1,9 +1,9 @@
 ---
-title: "<span class='pref'>Topological and Geometric</span>Shape Reconstruction Beyond Manifolds "
+title: "<span class='pref'>Vietoris--Rips Shadow for</span>Geometric Graph Reconstruction"
 title-slide-attributes: 
   data-background-image: "drawing.png"
   data-background-opacity: "0.3"
-subtitle: <green>TDA Week, Kyoto University, 2025</green>
+subtitle: <green>Tulane University, 2025</green>
 author: "<b>Sushovan Majhi</b>, *George Washington University, DC*"
 fig-cap-location: bottom
 format: 
@@ -20,21 +20,7 @@ editor:
 html-math-method: mathml
 ---
 
-# The <red>Problem</red> of <green>Shape Reconstruction</green> {background-image="drawing.png" background-opacity="0.3"}
-
-
-<!--
-# Today's Talk
-- The *finite* <green>reconstruction problem</green>
-- <green>Vietoris--Rips</green> complexes and their <green>shadow</green>
-- From <green>Gromov</green> to <green>Hausmann</green>'s *curious* question
-- <green>Latschev</green>'s remarkable (*but* <red>qualitative</red>!) answer
-- <green>Quantitative</green> Latschev's theorem
-  - *abstract* manifolds, *Euclidean* submanifolds, general geodesic Spaces
-- Back to Gromov: geometric reconstruction  
-- <red>Questions</red>
-
--->
+# The <red>Problem</red> of <green>Graph Reconstruction</green> {background-image="drawing.png" background-opacity="0.3"}
 
 ## Point Cloud {.smaller}
 ![A sample](sample_wedge.png)

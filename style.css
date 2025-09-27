@@ -1,0 +1,78 @@
+/*-- scss:rules --*/
+.caption, figcaption {
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em!important;
+}
+
+green {
+    color: #3be57f!important;
+}
+gray {
+    color: gray!important;
+}
+
+
+red {
+    color: #bb473f!important; 
+}
+.subtitle {
+    font-style: italic;
+}
+.title .pref {
+    display: inline-block;
+    position: absolute;
+    transform: translate(-10%, -55%);
+    font-style: italic;
+    color: #3be57f;
+    font-size: 0.6em;
+    font-family: cursive;
+}
+#refs {
+    font-size: 1em!important;
+}
+
+input {
+    background-color: transparent!important;
+    border: none!important;
+}
+
+
+input[type="range"] {
+   width: 100%!important;
+}
+input[type="number"] {
+    font-family: monospace!important;
+    font-size: 0.5em!important;
+    width: 10%!important;
+    overflow: hidden;
+    display: none;
+} 
+.callout {
+    font-size: 1.1em!important;
+}
+form {
+    width: 100%!important;
+}
+form label {
+    width: 20%!important;
+}
+.theorem {
+    font-style: italic;
+    border: 1px solid #3be57f;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.theorem .theorem-title {
+    font-style: normal;
+}
+
+.btn {
+    outline: none;
+    background-color: transparent!important;
+}

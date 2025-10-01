@@ -50,7 +50,6 @@ viewof showRips = Inputs.toggle({ label: 'Show Rips', value: true })
 ```
 
 ```{ojs}
-sc = require("https://cdn.jsdelivr.net/npm/@tdajs/simplicial-complex@1.2.1/dist/min.js")
 import { slider } from "@jashkenas/inputs"
 {
   const svg = d3
@@ -78,10 +77,37 @@ import { slider } from "@jashkenas/inputs"
     .attr("cy", (d) => d[1])
     .attr("r", "2.5px");
 
-  drawBalls(svg); drawRips(svg, sc.rips(S, scale, 2));
+  drawBalls(svg); 
+  drawRips(svg, rips(S, scale));
   
   return svg.node();
 }
+rips = function (sample, scale) {
+	const simplices=[d3.range(sample.length),[],[]];
+	const adjRips = new Array(sample.length);
+	const dEps = new Array(sample.length);
+	
+	for(var i = 0; i < adjRips.length; i++) {
+	    adjRips[i]= new Array(sample.length);
+	    
+	    for(var j = 0; j < adjRips.length; j++) {
+		  var d = dist2(sample[i],sample[j]); 
+		  if( d < scale) {
+		    adjRips[i][j]=d;
+		    if(i<j)
+    	 		simplices[1].push([i,j]);
+		  }
+		  else
+		    adjRips[i][j]=0;
+	    }
+	}
+	combinations(simplices[0],3).forEach(function(d) {
+    	    if ( diam2( d3.permute(sample,d) ) < scale )
+    		simplices[2].push(d);
+  });
+  return simplices;
+}
+
 X = lissajous(center, 0, center[0] - 70, center[1] - 50, 3, 2, 2000)
 S = lissajous(center, tol, center[0] - 70, center[1] - 50, 3, 2, n)
 center = [height / 2 + 60, height / 2]
@@ -124,6 +150,31 @@ function diam2(points) {
   });
   return diam;
 }
+function combinations(set, k) {
+    var i, j, combs, head, tailcombs;
+    if (k > set.length || k <= 0) {
+	return [];
+    }
+    if (k == set.length) {
+	return [set];
+    }
+    if (k == 1) {
+	combs = [];
+	for (i = 0; i < set.length; i++) {
+	    combs.push([set[i]]);
+	}
+	return combs;
+    }
+    combs = [];
+    for (i = 0; i < set.length - k + 1; i++) {
+	head = set.slice(i, i + 1);
+	tailcombs = combinations(set.slice(i + 1), k - 1);
+	for (j = 0; j < tailcombs.length; j++) {
+	    combs.push(head.concat(tailcombs[j]));
+	}
+    }
+    return combs
+}
 drawBalls = function (svg) {
   svg
     .selectAll(".A-ball")
@@ -154,10 +205,12 @@ drawBalls = function (svg) {
 
 
 ```{ojs}
-drawRips = function (svg, rips) {
-  if (rips.simplices[2]) {
+drawRips = function (svg, simplices) {
+  console.log(simplices);
+
+  if (simplices[2]) {
     svg.selectAll(".triangle")
-      .data(rips.simplices[2])
+      .data(simplices[2])
       .join("path")
       .attr("class", "triangle")
       .attr("d", (d) => d3.line()(d.map((v) => S[v])))
@@ -165,25 +218,14 @@ drawRips = function (svg, rips) {
       .attr("stroke", "none")
       .attr("opacity", "0.3");
   }
-  if (rips.simplices[1]) {
+  if (simplices[1]) {
     svg.selectAll(".edge")
-      .data(rips.simplices[1])
+      .data(simplices[1])
       .join("path")
       .attr("class", "edge")
       .attr("d", (d) => d3.line()(d.map((v) => S[v])))
-      .attr("stroke", "green").attr("stroke-width", "2");
+      .attr("stroke", "green").attr("stroke-width", "1.5");
   }
-
-  svg.selectAll(".vertex")
-    .data(S)
-    .join("circle")
-    .attr("class", "vertex")
-    .attr("class", "vertex")
-    .attr("fill", "white")
-    .attr("cx", (d) => d[0])
-    .attr("cy", (d) => d[1])
-    .attr("r", "2px");
-  
   return svg;
 }
 ```

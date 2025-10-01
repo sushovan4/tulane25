@@ -22,6 +22,173 @@ html-math-method: mathml
 
 # The <red>Problem</red> of <green>Graph Reconstruction</green> {background-image="drawing.png" background-opacity="0.3"}
 
+## 
+
+```{ojs}
+//| panel: sidebar
+viewof n = Inputs.range([0, 500], { label: "Sample Size", value: 300, step: 1 })
+viewof tol = Inputs.range([0, 100], { label: "Noise", value: 30, step: 1 })
+viewof scaleB = Inputs.range([0, 300], {
+  step: 1,
+  value: 0,
+  label: tex`r`
+});
+viewof scaleA = Inputs.range([0, 300], {
+  step: 1,
+  value: 0,
+  label: tex`r`
+})
+viewof scale = Inputs.range([0, 300], {
+  step: 1,
+  value: 0,
+  label: tex`\beta`
+})
+viewof isA = Inputs.toggle({ label: tex`X\text{ or }Y`, value: true });
+viewof showShape = Inputs.toggle({ label: 'Show Shape', value: true })
+viewof showSample = Inputs.toggle({ label: 'Show Sample', value: true })
+viewof showRips = Inputs.toggle({ label: 'Show Rips', value: true })
+```
+
+```{ojs}
+sc = require("https://cdn.jsdelivr.net/npm/@tdajs/simplicial-complex@1.2.1/dist/min.js")
+import { slider } from "@jashkenas/inputs"
+{
+  const svg = d3
+    .create("svg")
+    .attr("class", "canvas")
+    .style("margin-left", "15px")
+    .style("width", "100%")
+    .style("height", height);
+
+  svg
+    .append("path")
+    .attr("class", "shape")
+    .attr("stroke", "royalblue")
+    .attr("fill", "none")
+    .attr("d", d3.line()(X));
+
+  svg
+    .selectAll(".vertex")
+    .data(S)
+    .join("circle")
+    .attr("class", "vertex")
+    .attr("class", "vertex")
+    .attr("fill", "pink")
+    .attr("cx", (d) => d[0])
+    .attr("cy", (d) => d[1])
+    .attr("r", "2.5px");
+
+  drawBalls(svg); drawRips(svg, sc.rips(S, scale, 2));
+  
+  return svg.node();
+}
+X = lissajous(center, 0, center[0] - 70, center[1] - 50, 3, 2, 2000)
+S = lissajous(center, tol, center[0] - 70, center[1] - 50, 3, 2, n)
+center = [height / 2 + 60, height / 2]
+height = 600
+lissajous = function (
+  center,
+  tol = 5,
+  a = center[0] - 70,
+  b = center[1] - 50,
+  kx = 3,
+  ky = 2,
+  n = 300
+) {
+  var t = d3.range(n).map(function (d) {
+    return (2 * Math.PI * d) / (n - 1);
+  });
+  var points = [];
+  for (var i = 0; i < n; i++) {
+    points[i] = [
+      center[0] +
+        a * Math.cos(kx * t[i]) +
+        d3.randomUniform(tol)() * Math.cos(d3.randomUniform(2 * Math.PI)()),
+      center[1] +
+        b * Math.sin(ky * t[i]) +
+        d3.randomUniform(tol)() * Math.sin(d3.randomUniform(2 * Math.PI)())
+    ];
+  }
+  return points;
+}
+function dist2(a, b) {
+  if (a.length != b.length || a.length != 2) return null;
+  return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
+}
+function diam2(points) {
+  var diam = 0;
+  points.forEach(function (p) {
+    points.forEach(function (q) {
+      diam = Math.max(diam, dist2(p, q));
+    });
+  });
+  return diam;
+}
+drawBalls = function (svg) {
+  svg
+    .selectAll(".A-ball")
+    .data(X)
+    .join("circle")
+    .attr("class", "A-ball")
+    .attr("cx", (d) => d[0])
+    .attr("cy", (d) => d[1])
+    .attr("r", scaleA)
+    .attr("fill", "royalblue")
+    .attr("stroke", "none")
+    .attr("opacity", "0.1");
+  svg
+    .selectAll(".B-ball")
+    .data(S)
+    .join("circle")
+    .attr("class", "B-ball")
+    .attr("cx", (d) => d[0])
+    .attr("cy", (d) => d[1])
+    .attr("r", scaleB)
+    .attr("fill", "pink")
+    .attr("stroke", "none")
+    .attr("opacity", "0.1");
+  
+  return svg;
+}
+```
+
+
+```{ojs}
+drawRips = function (svg, rips) {
+  if (rips.simplices[2]) {
+    svg.selectAll(".triangle")
+      .data(rips.simplices[2])
+      .join("path")
+      .attr("class", "triangle")
+      .attr("d", (d) => d3.line()(d.map((v) => S[v])))
+      .attr("fill", "lightgreen")
+      .attr("stroke", "none")
+      .attr("opacity", "0.3");
+  }
+  if (rips.simplices[1]) {
+    svg.selectAll(".edge")
+      .data(rips.simplices[1])
+      .join("path")
+      .attr("class", "edge")
+      .attr("d", (d) => d3.line()(d.map((v) => S[v])))
+      .attr("stroke", "green").attr("stroke-width", "2");
+  }
+
+  svg.selectAll(".vertex")
+    .data(S)
+    .join("circle")
+    .attr("class", "vertex")
+    .attr("class", "vertex")
+    .attr("fill", "white")
+    .attr("cx", (d) => d[0])
+    .attr("cy", (d) => d[1])
+    .attr("r", "2px");
+  
+  return svg;
+}
+```
+
+
 ## Point Cloud {.smaller}
 ![A sample](sample_wedge.png)
 
@@ -93,9 +260,6 @@ Q: How to draw the map of the city from a noisy point-cloud of GPS locations?
 
 ## The Vietoris--Rips Complexes
 
-:::{.columns}
-
-:::{.column width="50%"}
 - a metric space $(X,d_X)$
   
 - a scale $\beta>0$ 
@@ -105,125 +269,6 @@ Q: How to draw the map of the city from a noisy point-cloud of GPS locations?
   - $X$ is the <green>vertex set</green>
   - each <green>subset</green> $A\subset X$ of $(k+1)$ points with <green>diameter</green> less than $\beta$ is a $k$-simplex.
 
-:::
-
-
-:::{.column  width="50%"}
-
-
-```{ojs}
-V = [];
-{
-  const height = "450px";
-  const container = d3.create("div").style("position", "relative");
-  let svg = container
-    .append("svg")
-    .attr("class", "canvas")
-    .style("margin-left", "15px")
-    .style("width", "90%")
-    .style("height", height)
-    .style("border", "0.5px solid #eee");
-  
-  const triangles = svg.append("g").attr("class", "triangles");
-  const edges = svg.append("g").attr("class", "edges");
-  const vertices = svg.append("g").attr("class", "vertices");
-
-  // scale
-  container
-    .append("div")
-    .style("width", "15px")
-    .style("height", height)
-    .style("background", "#eee")
-    .style("position", "absolute")
-    .style("top", "0")
-    .style("bottom", "0")
-    .append("div")
-    .style("width", "100%")
-    .style("height", scale + "px")
-    .style("background", "steelblue");
-  container
-    .append("div")
-    .style("margin-left", "12px")
-    .style("width", height)
-    .style("display", "inline-block")
-    .style("text-align", "center")
-    .style("transform", "rotate(-90deg)")
-    .style("transform-origin", "top left")
-    .html(tex`\beta`.outerHTML);
-
-  drawRips(svg, sc.rips(V, scale, 2));
-
-  svg.on("click", (e) => {
-    const coord = d3.pointer(e);
-    V.push(coord);
-    drawRips(svg, sc.rips(V, scale, 2));
-  });
-  return container.node();
-}
-```
-
-
-```{ojs}
-import { slider } from "@jashkenas/inputs"
-sc = require("https://cdn.jsdelivr.net/npm/@tdajs/simplicial-complex@1.2.1/dist/min.js")
-```
-
-
-```{ojs}
-drawRips = function (svg, rips) {
-  if (rips.simplices[2]) {
-    svg.selectAll(".triangle")
-      .data(rips.simplices[2])
-      .join("path")
-      .attr("class", "triangle")
-      .attr("d", (d) => d3.line()(d.map((v) => V[v])))
-      .attr("fill", "lightgreen")
-      .attr("stroke", "none")
-      .attr("opacity", "0.3");
-  }
-  if (rips.simplices[1]) {
-    svg.selectAll(".edge")
-      .data(rips.simplices[1])
-      .join("path")
-      .attr("class", "edge")
-      .attr("d", (d) => d3.line()(d.map((v) => V[v])))
-      .attr("stroke", "green").attr("stroke-width", "2");
-  }
-
-  svg.selectAll(".vertex")
-    .data(V)
-    .join("circle")
-    .attr("class", "vertex")
-    .attr("class", "vertex")
-    .attr("fill", "white")
-    .attr("cx", (d) => d[0])
-    .attr("cy", (d) => d[1])
-    .attr("r", "2px")
-    .on("mouseover", function () {
-      d3.select(this).attr("fill", "green").attr("r", "10px");
-    })
-    .on("mouseout", function () {
-      d3.select(this).attr("fill", "white").attr("r", "2px");
-    });
-    return svg;
-}
-```
-
-```{ojs}
-viewof scale = Inputs.range([0, 300], {
-  step: 1,
-  value: 0,
-  label: tex`\beta`
-})
-viewof btn = Inputs.button("clear", {
-  value: null,
-  reduce: () => { V.length = 0; viewof scale.value = 0;viewof scale.dispatchEvent(new CustomEvent("input")); }
-})
-```
-
-:::
-
-:::
 
 ## Gromov's Perspective {.smaller}
 ---Metric structures of Riemann & non-Riemann Spaces, *page100* 

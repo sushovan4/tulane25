@@ -34,7 +34,7 @@ red {
     font-size: 1em!important;
 }
 
-input {
+/* input {
     background-color: transparent!important;
     border: none!important;
 }
@@ -49,17 +49,21 @@ input[type="number"] {
     width: 10%!important;
     overflow: hidden;
     display: none;
-} 
+}  */
 .callout {
     font-size: 1.1em!important;
 }
-form {
+/* form {
     width: 100%!important;
 }
 form label {
     width: 20%!important;
 }
-.theorem {
+.btn {
+    outline: none;
+    background-color: transparent!important;
+}
+ */.theorem {
     font-style: italic;
     border: 1px solid #3be57f;
     padding: 10px;
@@ -72,7 +76,3 @@ form label {
     font-style: normal;
 }
 
-.btn {
-    outline: none;
-    background-color: transparent!important;
-}

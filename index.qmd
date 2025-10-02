@@ -260,9 +260,13 @@ Q: How to draw the map of the city from a noisy point-cloud of GPS locations?
       - geometrically close (in <green>Hausdorff distance</green>)
   
 
-# Reconstruction via <green>Vietoris--Rips Complexes</green> {background-image="drawing.png" background-opacity="0.3"}
+# <green>Topological</green> Reconstruction {background-image="drawing.png" background-opacity="0.3"}
 
-## The Vietoris--Rips Complexes
+## The Vietoris--Rips Complexes {.smaller}
+
+::: {.columns}
+
+:::{.column}
 
 - a metric space $(X,d_X)$
   
@@ -273,72 +277,49 @@ Q: How to draw the map of the city from a noisy point-cloud of GPS locations?
   - $X$ is the <green>vertex set</green>
   - each <green>subset</green> $A\subset X$ of $(k+1)$ points with <green>diameter</green> less than $\beta$ is a $k$-simplex.
 
+:::
 
-:::{.callout}
-## Metric Graph Reconstruction [*J. Appl. & Comp. Top., @Majhi2023*]
-Let $(G,d_G)$ be a compact, path-connected metric graph, $(S,d_S)$ a metric space, and $\beta>0$ a number such that $$3d_{GH}(G,S)<\beta<\frac{3}{4}\rho(G).$$ 
-Then, $\mathcal R_\beta(S)\simeq G$.
+::: {.column}
+![](single-rips.png)
 
 :::
 
+:::
 
-# <red>Beyond</red> Manifolds {background-image="drawing.png" background-opacity="0.3"}
-
-## Challenges
-
-- <red>Bad</red> shapes are ubiquitous in applications
-  - manifolds with boundary or not a topological manifold
-  - stratefied manifolds
-  - Euclidean subsets with vanishing reach (due to corners)
-- A *single* Rips complex <red>fails</red> to be topologically faithful, no matter the sample density 
-
-<!--
-- <red>Challenges</red> in extending Latschev's theorem
-  - defining <green>convexity radius</green> and <green>sectional curvatures</green> beyond closed Riemannian manifolds?
-  - extending <green>Jung's theorem</green>
--->
-
-## Metric Spaces of <green>Curvature</green> $\leq\kappa$ {.smaller}
-- <green>Length space</green>: A metric space with an *instrinsic* metric
-- <green>Geodesically complete</green>: a pair can be joined by a length-minimizing path
-- geodesic triangles are "slimmer" than corresponding "model triangles" in a standard space of constant curvature $\kappa$.
-
-- <red>Examples</red>: 
-  - Closed Riemannian manifolds
-  - Submanifolds of $\mathbb{R}^N$
-  - stratefied manifolds
-  - metric graphs
-  - embedded graphs in $\mathbb{R}^N$
-  - Euclidean Polytopes
-
-- <green>Quantitative</green> Lastchev's Theorem for $\mathrm{CAT}(\kappa)$ Spaces [@2406.04259]
-
-## Euclidean Subset Reconstruction {.smaller}
-- The sample $S$ comes equipped with $\|\cdot\|$
-- <red>Euclidean</red> Vietoric--Rips $\mathcal{R}_\beta(S)$ fails almost aways for any scale $\beta$
-- Remedy?
-  
 . . . 
 
+::: {.callout-caution appearance="minimal"}
+
+A *single* Rips complex <red>fails</red> to be topologically faithful, no matter the sample density 
+
+:::
+
+## <green>$\varepsilon$</green>-path Metric {.smaller}
 
 :::{.columns}
 :::{.column width="60%"}
-**<green>$\varepsilon$-path Metric</green>:**
 
-- Fix an $\varepsilon>0$, proportional to $d_H(S,X)$
+1. Fix a positive <green>$\varepsilon$</green>: <gray>proportional to $d_H(\mathcal S, \mathcal G)$</gray>;
 
-- For any two sample points $a,b\in S$, define $d_S^\varepsilon(a,b)$ to be the shortest distance when hopping over the points of $S$ with a step size $\leq\varepsilon$.
+2. Compute $\varepsilon$-neighborhood graph on $\mathcal S$: <green>$\mathcal R^{(1)}_\varepsilon(\mathcal S)$</green>;
+
+3. Define <green>$d_{\mathcal S}^\varepsilon(a,b)$</green> to be the shortest path metric on $\mathcal R^{(1)}_\varepsilon(\mathcal S)$;
+
+4. Vietoris--Rips of $\mathcal S$ under $d^\varepsilon_{\mathcal S}$: <green>$\mathcal{R}_\beta^\varepsilon(S)$</green>.
+
 :::
+
 
 :::{.column width="40%"}
-![$\varepsilon$-path Metric on $S$](path-metric.png)
+![$\varepsilon$-path Metric on $\mathcal S$](path-metric.png)
 :::
 
 :::
 
-- For a dense enough sample $S$ of $X$, $d^\varepsilon_S$ is quasi-isometric to the length metric on $X$
-- Consider the Vietoris--Rips of $S$ under $d_\varepsilon$; call it $\mathcal{R}_\beta^\varepsilon(S)$
-
+:::{.callout}
+## 
+For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_S$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
+:::
 
 
 ## <green>Large-scale</green> *Distortion* {.smaller}
@@ -366,6 +347,13 @@ Then, $\mathcal R_\beta(S)\simeq G$.
 Let $X$ be a geodesic subspace of $\mathbb R^N$.
 Let $\xi\in\left(0,1\right)$ and $\beta>0$ be fixed numbers. 
 $0<\varepsilon\leq\beta$ such that $\delta^\varepsilon_{\beta}(X)\leq1+\left(\frac{\xi}{1+\xi}\right)$, then for any compact subset $S\subset\mathbb R^N$ with $d_H(X,S)<\frac{1}{2}\xi\varepsilon$, we have $\mathcal{R}_\beta^\varepsilon(S)\simeq X$.
+:::
+
+:::{.callout}
+## Metric Graph Reconstruction [*J. Appl. & Comp. Top., @Majhi2023*]
+Let $(G,d_G)$ be a compact, path-connected metric graph, $(S,d_S)$ a metric space, and $\beta>0$ a number such that $$3d_{GH}(G,S)<\beta<\frac{3}{4}\rho(G).$$ 
+Then, $\mathcal R_\beta(S)\simeq G$.
+
 :::
 
 # <green>Geometric</green> Reconstruction {background-image="drawing.png" background-opacity="0.3"}

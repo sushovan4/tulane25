@@ -240,40 +240,25 @@ Q: How to draw the map of the city from a noisy point-cloud of GPS locations?
 ![Source: mapconstruction.org](mahmuda.jpg)
 
 
-## <red>$\mathbb M$a$\tau$hem$\alpha$t$\iota$cal</red> Formulation {background-image="drawing.png" background-opacity="0.3"}
-
+## <green>Reconstruction</green> Goals {.smaller}
 
 - <green>**Shape**</green>: A *Shape* is modeled as a metric space $(X,d_X)$
-  - <green>Riemannian manifold</green>
-  - <red>metric graph</red>
-  - <red>general metric *curvature* spaces</red>
+  - <gray>Riemannian manifold</gray>; citation
+  - <gray>general metric *curvature* spaces</gray>
+  - *embedded* metric graph ($\mathcal G\subset\mathbb R^N$)
 
-- <green>**Sample**</green>: A *finite* metric space $(S,d_S)$ *close* to $X$
+- <green>**Sample**</green>: A *finite* metric space $(\mathcal S,d_{\mathcal S})$ *close* to $\mathcal G$
 
     - small <green>Hausdorff</green> proximity when both $S,X\subset\mathbb R^d$
-    - *alternatively*, small <red>Gromov--Hausdorff</red> distance when abstract
-
-
-## <green>Reconstruction</green> Goals
-
+  
 - <span class="green">**Goal**</span>: Infer the topology of $X$ from $S$.
 
     - <gray>Estimate only the Betti numbers---number of connected components, cycles, voids, etc---of $X$</gray>
 
     - <green>construct</green> a topological space $\widehat{X}$ from $S$ to <green>retain the topology</green> of $X$ in some appropriate sense
-      - homotopy equivalent
-      - homeomorphic
+      - <gray>homotopy equivalent</gray>
       - geometrically close (in <green>Hausdorff distance</green>)
   
-## My <green>Motivation</green>
-
-- Provide a <green>window</green> of *scales* for the Vietoris--Rips complexes for a <green>topologically-faithful</green> reconstruction
-- Design provable reconstruction algorithms particularly for <red>bad</red> shapes
-- Topological perspective on Manifold and graph <green>hypotheses</green> for <red>random data</red>
-  - *Geometric Whitney's Theorem* by Fefferman et al.
-- Understand the <green>topology</green> of $\mathcal{R}_\beta(X)$ and their shadow
-- When is the homology of $\mathcal{R}_\beta(X)$ (and their shadow) <green>finitely</green> generated?
-
 
 # Reconstruction via <green>Vietoris--Rips Complexes</green> {background-image="drawing.png" background-opacity="0.3"}
 

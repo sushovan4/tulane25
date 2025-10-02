@@ -6,6 +6,7 @@ title-slide-attributes:
 subtitle: <green>Tulane University, 2025</green>
 author: "<b>Sushovan Majhi</b>, *George Washington University, DC*"
 fig-cap-location: bottom
+callout-icon: false
 format: 
     revealjs:
         theme: dark
@@ -294,7 +295,7 @@ A *single* Rips complex <red>fails</red> to be topologically faithful, no matter
 
 :::
 
-## <green>$\varepsilon$</green>-path Metric {.smaller}
+## Remedy 1: <green>$\varepsilon$</green>-path Metric {.smaller}
 
 :::{.columns}
 :::{.column width="60%"}
@@ -307,6 +308,8 @@ A *single* Rips complex <red>fails</red> to be topologically faithful, no matter
 
 4. Vietoris--Rips of $\mathcal S$ under $d^\varepsilon_{\mathcal S}$: <green>$\mathcal{R}_\beta^\varepsilon(S)$</green>.
 
+5. For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_S$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
+
 :::
 
 
@@ -316,22 +319,25 @@ A *single* Rips complex <red>fails</red> to be topologically faithful, no matter
 
 :::
 
-:::{.callout}
-## 
-For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_S$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
+. . . 
+
+
+:::{.callout-tip}
+## Metric Graph Reconstruction [*J. Appl. & Comp. Top., @Majhi2023*]
+Let $(\mathcal G,d_{\mathcal G})$ be a compact, path-connected metric graph, $(S,d_S)$ a metric space, and $\beta>0$ a number such that $$3d_{GH}(G,S)<\beta<\frac{3}{4}\rho(G).$$ 
+Then, $\mathcal R_\beta(S)\simeq G$.
 :::
 
 
-## <green>Large-scale</green> *Distortion* {.smaller}
+## Remedy 2: <green>Large-scale</green> *Distortion* 
 
 :::{.columns}
 
 :::{.column width="70%"}
 
 - A finite sample around a corner does not see the corner
-- <red>Global distortion</red>: $$\delta(X)=\sup_{a\neq b}\frac{d^L_X(a,b)}{\|a-b\|}$$
-- <green>Large-scale distortion</green>: $$\delta^\varepsilon_R(X)=\sup_{d^L(a,b)\geq R}\frac{d^L_X(a,b)}{d^L_{X^\varepsilon}(a,b)}$$
-- $\delta^\varepsilon_R(X)\to1$ as $\varepsilon\to0$, provided $X$ is a compact length space
+- <red>Global distortion</red>: $$\delta(\mathcal G)=\sup_{a\neq b}\frac{d^L_{\mathcal G}(a,b)}{\|a-b\|}$$
+- <green>Large-scale distortion</green>: $$\delta^\varepsilon_R(\mathcal G)=\sup_{d^L(a,b)\geq R}\frac{d^L_{\mathcal G}(a,b)}{d^L_{\mathcal G^\varepsilon}(a,b)}$$
 :::
 
 :::{.column width="30%"}
@@ -340,20 +346,16 @@ For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_S$ is <gr
 
 ::::
 
-. . .
+- $\delta^\varepsilon_R(\mathcal G)\to1$ as $\varepsilon\to0$, <gray>provided $\mathcal G$ is compact</gray>
+
+
+## Topological Reconstruction
 
 ::::{.callout-tip icon="false" .nonincremental style="font-size: 0.8em"}
-## Euclidean Subsets [@2406.04259]
+## Euclidean Graph Reconstruction [@2406.04259]
 Let $X$ be a geodesic subspace of $\mathbb R^N$.
 Let $\xi\in\left(0,1\right)$ and $\beta>0$ be fixed numbers. 
 $0<\varepsilon\leq\beta$ such that $\delta^\varepsilon_{\beta}(X)\leq1+\left(\frac{\xi}{1+\xi}\right)$, then for any compact subset $S\subset\mathbb R^N$ with $d_H(X,S)<\frac{1}{2}\xi\varepsilon$, we have $\mathcal{R}_\beta^\varepsilon(S)\simeq X$.
-:::
-
-:::{.callout}
-## Metric Graph Reconstruction [*J. Appl. & Comp. Top., @Majhi2023*]
-Let $(G,d_G)$ be a compact, path-connected metric graph, $(S,d_S)$ a metric space, and $\beta>0$ a number such that $$3d_{GH}(G,S)<\beta<\frac{3}{4}\rho(G).$$ 
-Then, $\mathcal R_\beta(S)\simeq G$.
-
 :::
 
 # <green>Geometric</green> Reconstruction {background-image="drawing.png" background-opacity="0.3"}

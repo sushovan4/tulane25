@@ -4,9 +4,6 @@
 body, h1, h2, h3, p, span, li, ol, div {
   font-family: "Pangolin", cursive !important; 
   /* font-family: "Schoolbell", cursive; */
-
-  font-weight: 400;
-  font-style: normal;
 }
 /*-- scss:rules --*/
 .caption, figcaption {
@@ -61,7 +58,7 @@ input[type="number"] {
     display: none;
 }  */
 .callout {
-    font-size: 1.1em!important;
+    font-size: 1em!important;
 }
 /* form {
     width: 100%!important;

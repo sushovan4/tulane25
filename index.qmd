@@ -79,7 +79,7 @@ import { slider } from "@jashkenas/inputs"
     .attr("r", "2.5px");
 
   drawBalls(svg); 
-  drawRips(svg, rips(S, scale));
+  // drawRips(svg, rips(S, scale));
   
   return svg.node();
 }

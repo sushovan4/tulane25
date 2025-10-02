@@ -349,20 +349,36 @@ Then, $\mathcal R_\beta(S)\simeq G$.
 - $\delta^\varepsilon_R(\mathcal G)\to1$ as $\varepsilon\to0$, <gray>provided $\mathcal G$ is compact</gray>
 
 
-## Topological Reconstruction
+## Topological Reconstruction {.smaller}
 
-::::{.callout-tip icon="false" .nonincremental style="font-size: 0.8em"}
-## Euclidean Graph Reconstruction [@2406.04259]
-Let $X$ be a geodesic subspace of $\mathbb R^N$.
-Let $\xi\in\left(0,1\right)$ and $\beta>0$ be fixed numbers. 
-$0<\varepsilon\leq\beta$ such that $\delta^\varepsilon_{\beta}(X)\leq1+\left(\frac{\xi}{1+\xi}\right)$, then for any compact subset $S\subset\mathbb R^N$ with $d_H(X,S)<\frac{1}{2}\xi\varepsilon$, we have $\mathcal{R}_\beta^\varepsilon(S)\simeq X$.
+:::{.callout-tip .nonincremental}
+## Metric Graph Reconstruction [@graph_shadow]
+<gray>Let $\mathcal G \subset \mathbb{R}^N$ be a compact, connected metric graph.  
+Fix any $\xi\in\left(0,\frac{1}{4}\right)$.
+For any positive $\beta<\frac{\ell(\mathcal G)}{4}$, choose a positive $\varepsilon\leq\frac{\beta}{3}$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq\frac{1+2\xi}{1+\xi}$.</gray> 
+
+If $\mathcal S\subset \mathbb R^N$ is such that $d_H(\mathcal G,\mathcal S)<\tfrac{1}{2}\xi\varepsilon$, then we have a homotopy equivalence <green>$\mathcal R^\varepsilon_\beta(\mathcal S)\simeq \mathcal G$</green>.
 :::
+
+. . . 
+
+Fixing $\xi=1/6$, we get a simpler but weaker statement.
+
+:::{.callout-tip .nonincremental appearance="minimal"}
+Let $\mathcal G \subset \mathbb{R}^N$ be a compact, connected metric graph.  
+For any positive $\beta<\ell(\mathcal G)/4$, choose a positive $\varepsilon\leq\beta/3$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq8/7$. 
+If $\mathcal S\subset \mathbb R^N$ is compact and $d_H(\mathcal G,\mathcal S)<\varepsilon/12$, then we have a homotopy equivalence $\mathcal R^\varepsilon_\beta(\mathcal S)\simeq\mathcal G$.
+:::
+
 
 # <green>Geometric</green> Reconstruction {background-image="drawing.png" background-opacity="0.3"}
 
-## Back to *Gromov*: Vietoris--Rips <green>Shadow</green> {.smaller}
-- Vietoris--Rips complexes are abstact, hence contain only topological information
-- **<green>Geometric reconstruction</green>**: entails constructing $\widehat{X}\subset\mathbb R^N$ from samples so that $\widehat{X}\simeq X$ and <green>$d_H(\widehat{X}, X)$ is controlled</green>.
+## Vietoris--Rips <green>Shadow</green> {.smaller}
+- <green>Geometric reconstruction</green> entails constructing <red>$\widehat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
+    - $\widehat{\mathcal G}\simeq \mathcal G$
+    - <green>$d_H(\widehat{\mathcal G}, \mathcal G)$ is small</green>.
+
+- Vietoris--Rips complexes are abstract, hence contain only topological information
 - A good candidate for $\widehat{X}$ is the *shadow* of a topologically-faithful Vietoris--Rips.
 - **<green>Shadow</green>**: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
   - @Chambers2010; @adamaszek_homotopy_2017

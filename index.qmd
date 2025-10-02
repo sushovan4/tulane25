@@ -377,7 +377,7 @@ If $\mathcal S\subset \mathbb R^N$ is compact and $d_H(\mathcal G,\mathcal S)<\v
 
 :::{.columns}
 
-:::{.column width="60%"}
+:::{.column width="65%"}
 - <green>Geometric reconstruction</green> entails constructing <red>$\hat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
     - $\hat{\mathcal G}\simeq \mathcal G$
     - <green>$d_H(\hat{\mathcal G}, \mathcal S)$ is small</green>.
@@ -387,29 +387,33 @@ If $\mathcal S\subset \mathbb R^N$ is compact and $d_H(\mathcal G,\mathcal S)<\v
 :::
 
 
-:::{.column width="40%"}
+:::{.column width="35%"}
 
-![](shadow-1.png){width="65%" fig-align="center"}
-
-:::
+![](shadow-1.png){width="60%" fig-align="center"}
 
 :::
 
-:::{.columns}
+:::
+
 
 . . . 
 
-:::{.column width="60%"}
+:::{.columns}
 
-- **<green>Shadow</green>**: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
-  - @Chambers2010; @adamaszek_homotopy_2017
+
+:::{.column width="65%"}
+
+**<green>Shadow</green>**: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
+  
+- Notorious for being <red>topologically unfaithful</red>
+    - @Chambers2010; @adamaszek_homotopy_2017
 
 
 :::
 
-:::{.column width="40%"}
+:::{.column width="35%"}
 
-![](shadow-2.png){width="65%" fig-align="center"}
+![](shadow-2.png){width="60%" fig-align="center"}
 
 :::
 
@@ -432,21 +436,25 @@ If $S\subset \mathbb R^N$ is compact and $d_H(G,S)<\tfrac{1}{2}\xi\varepsilon$, 
 
 ::::{.callout-tip icon="false" .nonincremental style="font-size: 1em"}
 ## Geometric Reconstruction [@graph_shadow]
-Let $G \subset \mathbb{R}^2$ a graph.
+<gray>Let $\mathcal G \subset \mathbb{R}^2$ a graph.
 Fix any $\xi\in\left(0,\frac{1-\Theta}{6}\right)$.
-For any positive $\beta<\min\left\{\Delta(G),\frac{\ell(G)}{12}\right\}$, choose a positive $\varepsilon\leq\frac{(1-\Theta)(1-\Theta-6\xi)}{12}\beta$ such that $\delta^{\varepsilon}_{\beta}(G)\leq\frac{1+2\xi}{1+\xi}$. 
-If $S\subset \mathbb R^2$ is compact and $d_H(G,S)<\tfrac{1}{2}\xi\varepsilon$, then the shadow $sh(\mathcal R_\beta^\varepsilon(S))$ is <green>homotopy equivalent</green> to $G$. 
-Moreover, <green>$d_H(sh(\mathcal R_\beta^\varepsilon(S)),G)<\left(\beta+\frac{1}{2}\xi\varepsilon\right)$</green>. 
+For any positive $\beta<\min\left\{\Delta(\mathcal G),\frac{\ell(\mathcal G)}{12}\right\}$, choose a positive $\varepsilon\leq\frac{(1-\Theta)(1-\Theta-6\xi)}{12}\beta$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq\frac{1+2\xi}{1+\xi}$.</gray>
+
+If $\mathcal S\subset \mathbb R^2$ and $d_H(\mathcal G, \mathcal S)<\tfrac{1}{2}\xi\varepsilon$, then the shadow $sh(\mathcal R_\beta^\varepsilon(\mathcal S))$ is <green>homotopy equivalent</green> to $\mathcal G$. 
+Moreover, <green>$d_H(sh(\mathcal R_\beta^\varepsilon(\mathcal S)),\mathcal G)<\left(\beta+\frac{1}{2}\xi\varepsilon\right)$</green>. 
 :::
 
 - <green>$\Theta\in(0,1)$</green>: depends on the angles between tangents of edges at the graph vertices
 - <green>$\Delta(G)$</green>: *Shadow radius* positive number for graphs with smooth edges
+- $\mathcal G$ is <red>planar</red>
 
-# Future Directions {background-image="drawing.png" background-opacity="0.3"}
+# Future Directions 
 
-- <green>Geometric reconstruction</green> of submanifolds via Rips shadow (*in preparation*)
-- Hausmann's constant is not <red>optimal</red>
+- The general case: <green>$\mathcal G\subset\mathbb R^N$</green>
+    - *in preparation* with <green>Kazuhiro Kawamura</green> & <green>Atish Mitra</green>
 - Use <green>discrete Morse theory</green> to perform *organized collapses* of higher dimensional simplices of shadow for homeomorphic reconstruction
 
+- <green>Submanifold reconstruction</green> via Vietoris--Rips shadow
+    - Topological reconstruction already done in [@MajhiLatschev]
 
 ## References {background-image="drawing.png" background-opacity="0.3"}

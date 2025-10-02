@@ -374,18 +374,47 @@ If $\mathcal S\subset \mathbb R^N$ is compact and $d_H(\mathcal G,\mathcal S)<\v
 # <green>Geometric</green> Reconstruction {background-image="drawing.png" background-opacity="0.3"}
 
 ## Vietoris--Rips <green>Shadow</green> {.smaller}
-- <green>Geometric reconstruction</green> entails constructing <red>$\widehat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
-    - $\widehat{\mathcal G}\simeq \mathcal G$
-    - <green>$d_H(\widehat{\mathcal G}, \mathcal G)$ is small</green>.
 
-- Vietoris--Rips complexes are abstract, hence contain only topological information
-- A good candidate for $\widehat{X}$ is the *shadow* of a topologically-faithful Vietoris--Rips.
-- **<green>Shadow</green>**: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
-  - @Chambers2010; @adamaszek_homotopy_2017
+:::{.columns}
+
+:::{.column width="60%"}
+- <green>Geometric reconstruction</green> entails constructing <red>$\hat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
+    - $\hat{\mathcal G}\simeq \mathcal G$
+    - <green>$d_H(\hat{\mathcal G}, \mathcal S)$ is small</green>.
+
+- Vietoris--Rips complexes are <red>abstract</red>, hence contain only topological information
+- A good candidate for $\hat{\mathcal G}$ is the *shadow* of a topologically-faithful Vietoris--Rips.
+:::
+
+
+:::{.column width="40%"}
+
+![](shadow-1.png){width="65%" fig-align="center"}
+
+:::
+
+:::
+
+:::{.columns}
 
 . . . 
 
-![](shadow.png){width="80%" fig-align="center"}
+:::{.column width="60%"}
+
+- **<green>Shadow</green>**: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
+  - @Chambers2010; @adamaszek_homotopy_2017
+
+
+:::
+
+:::{.column width="40%"}
+
+![](shadow-2.png){width="65%" fig-align="center"}
+
+:::
+
+:::
+
 
 ## Graph Reconstruction via Shadow {.smaller}
 

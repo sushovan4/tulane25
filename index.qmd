@@ -23,7 +23,7 @@ html-math-method: mathml
 
 # The <red>Problem</red> of <green>Graph Reconstruction</green> {background-image="drawing.png" background-opacity="0.3"}
 
-## The Talk in a Nutshell
+## The Talk in a Nutshell {style="font-size: 0.7em"}
 
 ```{ojs}
 //| panel: sidebar
@@ -116,7 +116,7 @@ rips = function (sample, scale) {
 X = lissajous(center, 0, center[0] - 70, center[1] - 50, 3, 2, 2000)
 S = lissajous(center, tol, center[0] - 70, center[1] - 50, 3, 2, n)
 center = [height / 2 + 100, height / 2]
-height = 600
+height = 500
 lissajous = function (
   center,
   tol = 5,

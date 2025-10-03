@@ -78,7 +78,7 @@ import { slider } from "@jashkenas/inputs"
       .attr("fill", "#bb473f")
       .attr("cx", (d) => d[0])
       .attr("cy", (d) => d[1])
-      .attr("r", "2px");
+      .attr("r", "3px");
   }
   if(scaleA > 0 || scaleB > 0)
     drawBalls(svg, X, S, scaleA, scaleB); 
@@ -234,7 +234,7 @@ drawRips = function (svg, simplices) {
 ## Practical Motivation
 ![The City of Berlin](berlin.jpg)
 
-Q: How to draw the map of the city from a noisy point-cloud of <green>GPS locations</green>?
+Q: How to draw the map of the city from a <red>noisy</red> point-cloud of <green>GPS locations</green>?
 
 ## A Reconstruction of Berlin
 ![Source: mapconstruction.org](mahmuda.jpg)

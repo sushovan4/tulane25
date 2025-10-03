@@ -376,19 +376,18 @@ If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/1
 
 :::{.columns}
 
-:::{.column width="65%"}
-- <green>Geometric reconstruction</green> entails constructing <red>$\hat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
-    - $\hat{\mathcal G}\simeq \mathcal G$
-    - <green>$d_H(\hat{\mathcal G}, \mathcal S)$ is small</green>.
+:::{.column width="70%"}
+- <green>Geometric reconstruction</green>: entails constructing <red>$\hat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
+    - $\hat{\mathcal G}\simeq \mathcal G$ & $d_H(\hat{\mathcal G}, \mathcal S)$ is small
 
 - Vietoris--Rips complexes are <red>abstract</red>, hence contain only topological information
 - A good candidate for $\hat{\mathcal G}$ is the *shadow* of a topologically-faithful Vietoris--Rips.
 :::
 
 
-:::{.column width="35%"}
+:::{.column width="30%"}
 
-![](shadow-1.png){width="60%" fig-align="center"}
+![$\mathcal K$](shadow-1.png){width="80%" fig-align="center"}
 
 :::
 
@@ -400,19 +399,18 @@ If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/1
 :::{.columns}
 
 
-:::{.column width="65%"}
+:::{.column width="70%"}
 
-**<green>Shadow</green>**: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
+- <green>Shadow</green>: For simplicial complex $\mathcal K$ with vertices from $\mathbb R^N$ is the union of the (Euclidean) convex hulls of simpices $\sigma\in\mathcal K$
   
 - Notorious for being <red>topologically unfaithful</red>
     - @Chambers2010; @adamaszek_homotopy_2017
 
-
 :::
 
-:::{.column width="35%"}
+:::{.column width="30%"}
 
-![](shadow-2.png){width="60%" fig-align="center"}
+![$\mathrm{sh}(\mathcal K)$](shadow-2.png){width="80%" fig-align="center"}
 
 :::
 

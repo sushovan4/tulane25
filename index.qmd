@@ -303,9 +303,7 @@ A *single* Vietoris--Rips complex <red>fails</red> to be topologically faithful,
 
 3. Define <green>$d_{\mathcal S}^\varepsilon(a,b)$</green> to be the shortest path metric on $\mathcal R^{(1)}_\varepsilon(\mathcal S)$;
 
-4. Vietoris--Rips of $\mathcal S$ under $d^\varepsilon_{\mathcal S}$: <green>$\mathcal{R}_\beta^\varepsilon(S)$</green>.
-
-5. For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_S$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
+4. Denote by <green>$\mathcal{R}_\beta^\varepsilon(S)$</green> the Vietoris--Rips complex of $\mathcal S$ under $d^\varepsilon_{\mathcal S}$.
 
 :::
 
@@ -318,33 +316,37 @@ A *single* Vietoris--Rips complex <red>fails</red> to be topologically faithful,
 
 . . . 
 
+::: {.callout-tip appearance="minimal"}
+## Quasi-isometry [@2406.04259]
+For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_{\mathcal S}$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
 
-:::{.callout-tip}
-## Metric Graph Reconstruction [*J. Appl. & Comp. Top., @Majhi2023*]
-Let $(\mathcal G,d_{\mathcal G})$ be a compact, path-connected metric graph, $(S,d_S)$ a metric space, and $\beta>0$ a number such that $$3d_{GH}(G,S)<\beta<\frac{3}{4}\rho(G).$$ 
-Then, $\mathcal R_\beta(S)\simeq G$.
 :::
 
 
-## Remedy 2: <green>Large-scale</green> *Distortion* 
+## Remedy 2: <green>Large-scale</green> *Distortion* {.smaller}
 
 :::{.columns}
 
-:::{.column width="70%"}
+:::{.column width="60%"}
 
 - A finite sample around a corner does not see the corner
 - <red>Global distortion</red>: $$\delta(\mathcal G)=\sup_{a\neq b}\frac{d^L_{\mathcal G}(a,b)}{\|a-b\|}$$
 - <green>Large-scale distortion</green>: $$\delta^\varepsilon_R(\mathcal G)=\sup_{d^L(a,b)\geq R}\frac{d^L_{\mathcal G}(a,b)}{d^L_{\mathcal G^\varepsilon}(a,b)}$$
 :::
 
-:::{.column width="30%"}
-![](graph.png){width="60%"}
+:::{.column width="40%"}
+![](graph.png){width="50%"}
 :::
 
 ::::
 
-- $\delta^\varepsilon_R(\mathcal G)\to1$ as $\varepsilon\to0$, <gray>provided $\mathcal G$ is compact</gray>
+. . . 
 
+::: {.callout-tip appearance="minimal"}
+## Limit [@2406.04259]
+For any $R>0$, $\delta^\varepsilon_R(\mathcal G)\to1$ as $\varepsilon\to0$, <gray>provided $\mathcal G$ is compact</gray>.
+
+:::
 
 ## Topological Reconstruction {.smaller}
 
@@ -359,12 +361,12 @@ If $\mathcal S\subset \mathbb R^N$ is such that $d_H(\mathcal G,\mathcal S)<\tfr
 
 . . . 
 
-Fixing $\xi=1/6$, we get a simpler but weaker statement.
+Fixing <green>$\xi=1/6$</green>, we get a simpler but weaker statement.
 
 :::{.callout-tip .nonincremental appearance="minimal"}
 Let $\mathcal G \subset \mathbb{R}^N$ be a compact, connected metric graph.  
 For any positive $\beta<\ell(\mathcal G)/4$, choose a positive $\varepsilon\leq\beta/3$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq8/7$. 
-If $\mathcal S\subset \mathbb R^N$ is compact and $d_H(\mathcal G,\mathcal S)<\varepsilon/12$, then we have a homotopy equivalence $\mathcal R^\varepsilon_\beta(\mathcal S)\simeq\mathcal G$.
+If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/12$, then we have a homotopy equivalence $\mathcal R^\varepsilon_\beta(\mathcal S)\simeq\mathcal G$.
 :::
 
 

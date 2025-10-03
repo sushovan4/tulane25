@@ -232,12 +232,12 @@ drawRips = function (svg, simplices) {
 
 
 ## Practical Motivation
-![The City of Berlin](berlin.jpg)
+![<gray>GPS locations around Berlin</gray>](berlin.jpg)
 
 Q: How to draw the map of the city from a <red>noisy</red> point-cloud of <green>GPS locations</green>?
 
 ## A Reconstruction of Berlin
-![Source: mapconstruction.org](mahmuda.jpg)
+![<gray>Source: mapconstruction.org</gray>](mahmuda.jpg)
 
 
 ## Reconstruction Goals {.smaller}

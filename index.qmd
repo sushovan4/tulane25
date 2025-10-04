@@ -254,7 +254,7 @@ drawRips = function (svg, simplices) {
 - <green>**Goal**</green>: Infer the topology of $\mathcal G$ from $\mathcal S$.
     - <gray>Estimate only the Betti numbers---number of connected components, cycles, voids, etc---of $\mathcal G$</gray>
 
-    - <green>construct</green> a topological space $\hat{\mathcal G}$ from $\mathcal S$ so that
+    - <green>construct</green> a topological space $\hat{\mathcal G}$ (e.g. Vietoris--Rips) from $\mathcal S$ so that
       - $\hat{\mathcal G}$ is homotopy equivalent to $\mathcal G$ (<green>topological</green> reconstruction)
       - $\hat{\mathcal G}\subset\mathbb R^N$ and $d_{\mathrm H}(\hat{\mathcal G}, \mathcal S)$ small (<green>geometric</green> reconstruction)
   
@@ -455,4 +455,4 @@ Moreover, <green>$d_H(sh(\mathcal R_\beta^\varepsilon(\mathcal S)),\mathcal G)<\
 - <green>Submanifold reconstruction</green> via Vietoris--Rips shadow
     - Topological reconstruction already done in [@MajhiLatschev]
 
-## References {background-image="drawing.png" background-opacity="0.3"}
+## References {background-image="drawing.png" background-opacity="0.3" style="font-size: 0.6em"}

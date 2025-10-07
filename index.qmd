@@ -318,7 +318,7 @@ A *single* Vietoris--Rips complex <red>fails</red> to be topologically faithful,
 . . . 
 
 ::: {.callout-tip appearance="minimal"}
-## Quasi-isometry [@2406.04259]
+## Quasi-isometry [@Majhi2023]
 For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_{\mathcal S}$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
 
 :::
